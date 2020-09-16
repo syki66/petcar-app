@@ -16,7 +16,7 @@ const option = {
   method: 'GET'
 }
 
-
+// fetch 를 http get으로 바꿔야됨
 export default class App extends React.Component {
 
   intervalID = 0;
@@ -66,11 +66,12 @@ export default class App extends React.Component {
       this.state.isLogin ? (
         <IsLogin changeLoginStatusTrue = {this.changeLoginStatusTrue} />
       ) : (
-          <View style={styles.container}>
-            <WebView
-              scrollEnabled = "false"
-              source={{
-                html: (`
+          <View>
+            <View style={styles.container}>
+              <WebView
+                scrollEnabled="false"
+                source={{
+                  html: (`
                   <html>
                     <head>
                       <meta name="viewport" content="width=device-width, user-scalable=no">
@@ -80,12 +81,69 @@ export default class App extends React.Component {
                     </body>
                   </html>
                 `)
-              }}
-              
-            />
-            <View style={styles.arrow}>
+                }}
+
+              />
+            </View>
+
+
+            <View style={styles.arrows}>
+
+              <View style={styles.arrowsRow}>
+                <TouchableOpacity
+                  onPressIn={this.startFetchInterval}
+                  onPressOut={this.stopFetchInterval}
+                  style={styles.arrow}
+                >
+                  <Text>button q</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  onPressIn={this.startFetchInterval}
+                  onPressOut={this.stopFetchInterval}
+                  style={styles.arrow}
+                >
+                  <Text>button w</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  onPressIn={this.startFetchInterval}
+                  onPressOut={this.stopFetchInterval}
+                  style={styles.arrow}
+                >
+                  <Text>button e</Text>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.arrowsRow}>
+                <TouchableOpacity
+                  onPressIn={this.startFetchInterval}
+                  onPressOut={this.stopFetchInterval}
+                  style={styles.arrow}
+                >
+                  <Text>button a</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  onPressIn={this.startFetchInterval}
+                  onPressOut={this.stopFetchInterval}
+                  style={styles.arrow}
+                >
+                  <Text>button s</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  onPressIn={this.startFetchInterval}
+                  onPressOut={this.stopFetchInterval}
+                  style={styles.arrow}
+                >
+                  <Text>button d</Text>
+                </TouchableOpacity>
+              </View>
 
             </View>
+
+
           </View>
       )
 
@@ -97,11 +155,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
   
  
-        <TouchableOpacity onPressIn={this.startFetchInterval} onPressOut={this.stopFetchInterval}>
-          <View style={styles.button}>
-            <Text>Touch Here</Text>
-          </View>
-        </TouchableOpacity>
+
         
         <StatusBar style="auto" />
       </View>
@@ -119,16 +173,23 @@ const styles = StyleSheet.create({
     height: screenWidth * 0.75,
     width: "100%",
     marginTop: getStatusBarHeight(),
-
-    //alignSelf: 'stretch',
-    //bottom: 0,
-    //backgroundColor:'red'
-    
   },
 
-  arrow: {
+  arrows: {
+    backgroundColor: 'pink',
+    height: 200,
+  },
 
-  }
+  arrowsRow: {
+    flexDirection: 'row',
+    flex:1
+  },
+
+
+  arrow: {
+    flex:1
+  },
+
   /*
   container: {
     flex: 1,
