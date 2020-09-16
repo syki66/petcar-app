@@ -5,15 +5,35 @@ import { StyleSheet, Text, View, Button, TouchableWithoutFeedback, TouchableOpac
 
 export default class IsLogin extends React.Component {
     state = {
-        
         host: "0.0.0.0",
         port: "8080",
     }
 
-    submitHostPort(){
-        alert(`http://${this.state.host}:${this.state.port}`);
+    checkUrlValidation = (url) => {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = (e) => {
+          if (request.readyState !== 4) {
+            return;
+          }
+        
+          if (request.status === 200) {
+            alert('접속 성공');
+            this.props.changeLoginStatusTrue();
+          } else {
+            alert('호스트와 포트를 다시 한번 확인해주세요.');
+          }
+        };
+        request.open('GET', url);
+        request.send();
+    }
+
+    submitHostPort = () => {
+        const url = `http://${this.state.host}:${this.state.port}/`;
+        this.checkUrlValidation(url);
         //this.setState({isLogin : true});
-        this.props.test();
+        // if (this.checkUrlValidation(url)){
+        //     this.props.changeLoginStatusTrue();
+        // }
     }
     
     render() {
@@ -31,12 +51,11 @@ export default class IsLogin extends React.Component {
               style={styles.input}
             />
     
-    
             <TouchableOpacity 
               onPress={() => { this.submitHostPort() }}
               style={styles.button}
             >
-              <Text>제출</Text>
+              <Text style={styles.text}>제출</Text>
             </TouchableOpacity>
     
           </SafeAreaView>
@@ -55,19 +74,24 @@ const styles = StyleSheet.create({
     input: {
       borderWidth: 2,
       borderColor: '#B7D0E7',
-      margin: 20,
+      margin: 10,
       height: 50,
       fontSize: 50,
       textAlign: 'center'
     },
   
     button: {
-      margin: 20,
+      margin: 10,
       height: 50,
       fontSize: 50,
       color: 'green',
       backgroundColor: 'green',
-      justifyContent: 'center'
-      
+      justifyContent: 'center',
+    },
+
+    text: {
+        textAlign: 'center',
+        fontSize: 50,
+        color: 'white'
     }
 })

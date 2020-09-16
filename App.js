@@ -16,11 +16,25 @@ export default class App extends React.Component {
   
   state = {
     isLogin: false,
-    DCMotor: true,
-
-    
+    DCMotor: true,    
   }
 
+  fetchUrl = () => {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = (e) => {
+      if (request.readyState !== 4) {
+        return;
+      }
+    
+      if (request.status === 200) {
+        console.log('success', request.responseText);
+      } else {
+        console.warn('error');
+      }
+    };
+    request.open('GET', 'http://192.168.123.21:8080/dc_motor/1');
+    request.send();
+  }
 
   startFetchInterval = () => {
     //console.log("start")
@@ -35,7 +49,7 @@ export default class App extends React.Component {
     this.setState({ DCMotor: false });
   }
 
-  test = () => {
+  changeLoginStatusTrue = () => {
     this.setState({isLogin: true});
   }
 
@@ -43,7 +57,7 @@ export default class App extends React.Component {
   render(){
     return (
       !this.state.isLogin ? (
-        <IsLogin test = {this.test} />
+        <IsLogin changeLoginStatusTrue = {this.changeLoginStatusTrue} />
       ) : (
         <SafeAreaView>
           <Text>로그인 성공</Text>
