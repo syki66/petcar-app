@@ -13,7 +13,10 @@
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
-    "react-native-web": "~0.11.7"
+    "react-native-status-bar-height": "^2.5.0",
+    "react-native-video": "^5.1.0-alpha8",
+    "react-native-web": "~0.11.7",
+    "react-native-webview": "^10.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

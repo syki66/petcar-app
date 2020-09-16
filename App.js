@@ -1,7 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
+import { setStatusBarBackgroundColor, StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View, Button, TouchableWithoutFeedback, TouchableOpacity, TextInput, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableWithoutFeedback, TouchableOpacity, TextInput, SafeAreaView, Image, Dimensions } from 'react-native';
+import { WebView } from 'react-native-webview';
+
+import { getStatusBarHeight } from 'react-native-status-bar-height';
+
+
 import IsLogin from './IsLogin';
+
+const screenWidth = Dimensions.get('window').width;
 
 const input_url = "http://192.168.123.21:8080/dc_motor/0";
 
@@ -16,7 +23,7 @@ export default class App extends React.Component {
   
   state = {
     isLogin: false,
-    DCMotor: true,    
+    DCMotor: true,
   }
 
   fetchUrl = () => {
@@ -56,12 +63,30 @@ export default class App extends React.Component {
 
   render(){
     return (
-      !this.state.isLogin ? (
+      this.state.isLogin ? (
         <IsLogin changeLoginStatusTrue = {this.changeLoginStatusTrue} />
       ) : (
-        <SafeAreaView>
-          <Text>로그인 성공</Text>
-        </SafeAreaView>
+          <View style={styles.container}>
+            <WebView
+              scrollEnabled = "false"
+              source={{
+                html: (`
+                  <html>
+                    <head>
+                      <meta name="viewport" content="width=device-width, user-scalable=no">
+                    </head>
+                    <body style="margin: 0px; background: #0e0e0e;">
+                      <img style="width: 100%" src="http://192.168.123.21:8080/video_feed">
+                    </body>
+                  </html>
+                `)
+              }}
+              
+            />
+            <View style={styles.arrow}>
+
+            </View>
+          </View>
       )
 
 
@@ -89,7 +114,21 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
 
-  
+
+  container: {
+    height: screenWidth * 0.75,
+    width: "100%",
+    marginTop: getStatusBarHeight(),
+
+    //alignSelf: 'stretch',
+    //bottom: 0,
+    //backgroundColor:'red'
+    
+  },
+
+  arrow: {
+
+  }
   /*
   container: {
     flex: 1,
