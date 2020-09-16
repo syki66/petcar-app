@@ -30,10 +30,6 @@ export default class IsLogin extends React.Component {
     submitHostPort = () => {
         const url = `http://${this.state.host}:${this.state.port}/`;
         this.checkUrlValidation(url);
-        //this.setState({isLogin : true});
-        // if (this.checkUrlValidation(url)){
-        //     this.props.changeLoginStatusTrue();
-        // }
     }
     
     render() {
@@ -41,12 +37,14 @@ export default class IsLogin extends React.Component {
             <SafeAreaView style={styles.container}>
             <TextInput 
               placeholder="HOST 입력" 
+              keyboardType="numeric"
               onChangeText={(text) => this.setState( {host: text})}
               style={styles.input}
             />
             
             <TextInput
               placeholder="PORT 입력"
+              keyboardType="numeric"
               onChangeText={(text) => this.setState({ port: text })}
               style={styles.input}
             />
