@@ -9,10 +9,9 @@ export default class IsLogin extends React.Component {
         port: "8080",
     }
 
-    sendData = () => {
-      this.props.parentCallback("callback test");
+    sendDataToParent = () => {
+      this.props.sendStateToParent(`http://${this.state.host}:${this.state.port}`);
     }
-
 
     checkUrlValidation = (url, host) => {
       if (host.includes('.')) {
@@ -24,7 +23,7 @@ export default class IsLogin extends React.Component {
 
           if (request.status === 200) {
             alert('접속 성공');
-            this.sendData()
+            this.sendDataToParent()
             this.props.changeLoginStatusTrue();
           } else {
             alert('접속 실패.\n호스트, 포트, 서버를 다시 한번 확인해주세요.');
@@ -38,8 +37,8 @@ export default class IsLogin extends React.Component {
     }
 
     submitHostPort = () => {
-        const url = `http://${this.state.host}:${this.state.port}/`;
-        this.checkUrlValidation(url, this.state.host);
+        const baseUrl = `http://${this.state.host}:${this.state.port}/`;
+        this.checkUrlValidation(baseUrl, this.state.host);
     }
     
     render() {

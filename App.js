@@ -10,11 +10,15 @@ import IsLogin from './IsLogin';
 
 const screenWidth = Dimensions.get('window').width;
 
-const input_url = "http://192.168.123.21:8080/dc_motor/3";
 
-const option = {
-  method: 'GET'
-}
+
+// const input_url = "http://192.168.123.11:8080/dc_motor/3";
+
+
+// const option = {
+//   method: 'GET'
+// }
+
 
 // fetch 를 http get으로 바꿔야됨
 export default class App extends React.Component {
@@ -24,33 +28,35 @@ export default class App extends React.Component {
   state = {
     isLogin: false,
     DCMotor: true,
-    message: "aaaaaaaaa"
+    baseUrl: ""
   }
 
-  callbackFunction = (childData) => {
-    this.setState({message: childData})
+  getChildState = (baseUrl) => {
+    this.setState({ baseUrl })
   }
 
-  fetchUrl = () => {
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = (e) => {
-      if (request.readyState !== 4) {
-        return;
-      }
-    
-      if (request.status === 200) {
-        console.log('success', request.responseText);
-      } else {
-        console.warn('error');
-      }
-    };
-    request.open('GET', 'http://192.168.123.11:8080/dc_motor/0');
-    request.send();
+  changeLoginStatusTrue = () => {
+    this.setState({isLogin: true});
   }
 
-  startFetchInterval = () => {
+
+  /*
+  그냥 기존 fetch 함수 써도 성능 비슷한듯
+  fetch(input_url, option)
+  */
+
+
+ fetchUrl = (path) => {
+  var request = new XMLHttpRequest();
+  request.open('GET', `${this.state.baseUrl}${path}`);
+  request.send();
+}
+
+
+
+  startFetchInterval = (direction) => {
     //console.log("start")
-    this.intervalID = setInterval(() => this.fetchUrl()/*fetch(input_url, option)*/, 50 );
+    this.intervalID = setInterval(() => this.fetchUrl(direction), 50 );
     this.setState({ DCMotor: true });
     
   }
@@ -61,16 +67,15 @@ export default class App extends React.Component {
     this.setState({ DCMotor: false });
   }
 
-  changeLoginStatusTrue = () => {
-    this.setState({isLogin: true});
-  }
+
 
 
   render(){
     return (
       !this.state.isLogin ? (
-        <IsLogin changeLoginStatusTrue = {this.changeLoginStatusTrue} 
-        parentCallback = {this.callbackFunction}
+        <IsLogin
+          changeLoginStatusTrue={this.changeLoginStatusTrue}
+          sendStateToParent={this.getChildState}
         />
       ) : (
           <View>
@@ -84,7 +89,7 @@ export default class App extends React.Component {
                       <meta name="viewport" content="width=device-width, user-scalable=no">
                     </head>
                     <body style="margin: 0px; background: #0e0e0e;">
-                      <img style="width: 100%" src="http://192.168.123.11:8080/video_feed">
+                      <img style="width: 100%" src=${this.state.baseUrl}/video_feed>
                     </body>
                   </html>
                 `)
@@ -92,13 +97,13 @@ export default class App extends React.Component {
 
               />
             </View>
-                <Text>{this.state.message}</Text>
+                <Text>{this.state.baseUrl}</Text>
 
             <View style={styles.arrows}>
 
               <View style={styles.arrowsRow}>
                 <TouchableOpacity
-                  onPressIn={this.startFetchInterval}
+                  onPressIn={() => this.startFetchInterval("/dc_motor/4")}
                   onPressOut={this.stopFetchInterval}
                   style={styles.arrow}
                 >
@@ -106,7 +111,7 @@ export default class App extends React.Component {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                  onPressIn={this.startFetchInterval}
+                  onPressIn={() => this.startFetchInterval("/dc_motor/0")}
                   onPressOut={this.stopFetchInterval}
                   style={styles.arrow}
                 >
@@ -114,7 +119,7 @@ export default class App extends React.Component {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                  onPressIn={this.startFetchInterval}
+                  onPressIn={() => this.startFetchInterval("/dc_motor/5")}
                   onPressOut={this.stopFetchInterval}
                   style={styles.arrow}
                 >
@@ -124,7 +129,7 @@ export default class App extends React.Component {
 
               <View style={styles.arrowsRow}>
                 <TouchableOpacity
-                  onPressIn={this.startFetchInterval}
+                  onPressIn={() => this.startFetchInterval("/dc_motor/2")}
                   onPressOut={this.stopFetchInterval}
                   style={styles.arrow}
                 >
@@ -132,7 +137,7 @@ export default class App extends React.Component {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                  onPressIn={this.startFetchInterval}
+                  onPressIn={() => this.startFetchInterval("/dc_motor/1")}
                   onPressOut={this.stopFetchInterval}
                   style={styles.arrow}
                 >
@@ -140,7 +145,7 @@ export default class App extends React.Component {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                  onPressIn={this.startFetchInterval}
+                  onPressIn={() => this.startFetchInterval("/dc_motor/3")}
                   onPressOut={this.stopFetchInterval}
                   style={styles.arrow}
                 >
