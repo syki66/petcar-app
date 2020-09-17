@@ -7,6 +7,7 @@ import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 
 import IsLogin from './IsLogin';
+import Arrow from './Arrow';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -27,7 +28,7 @@ export default class App extends React.Component {
   
   state = {
     isLogin: false,
-    DCMotor: true,
+    //DCMotor: true,
     baseUrl: ""
   }
 
@@ -40,32 +41,7 @@ export default class App extends React.Component {
   }
 
 
-  /*
-  그냥 기존 fetch 함수 써도 성능 비슷한듯
-  fetch(input_url, option)
-  */
 
-
- fetchUrl = (path) => {
-  var request = new XMLHttpRequest();
-  request.open('GET', `${this.state.baseUrl}${path}`);
-  request.send();
-}
-
-
-
-  startFetchInterval = (direction) => {
-    //console.log("start")
-    this.intervalID = setInterval(() => this.fetchUrl(direction), 50 );
-    this.setState({ DCMotor: true });
-    
-  }
-
-  stopFetchInterval = () => {
-    //console.log("stop");
-    clearInterval(this.intervalID);
-    this.setState({ DCMotor: false });
-  }
 
 
 
@@ -99,62 +75,9 @@ export default class App extends React.Component {
             </View>
                 <Text>{this.state.baseUrl}</Text>
 
-            <View style={styles.arrows}>
-
-              <View style={styles.arrowsRow}>
-                <TouchableOpacity
-                  onPressIn={() => this.startFetchInterval("/dc_motor/4")}
-                  onPressOut={this.stopFetchInterval}
-                  style={styles.arrow}
-                >
-                  <Text>button q</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  onPressIn={() => this.startFetchInterval("/dc_motor/0")}
-                  onPressOut={this.stopFetchInterval}
-                  style={styles.arrow}
-                >
-                  <Text>button w</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  onPressIn={() => this.startFetchInterval("/dc_motor/5")}
-                  onPressOut={this.stopFetchInterval}
-                  style={styles.arrow}
-                >
-                  <Text>button e</Text>
-                </TouchableOpacity>
-              </View>
-
-              <View style={styles.arrowsRow}>
-                <TouchableOpacity
-                  onPressIn={() => this.startFetchInterval("/dc_motor/2")}
-                  onPressOut={this.stopFetchInterval}
-                  style={styles.arrow}
-                >
-                  <Text>button a</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  onPressIn={() => this.startFetchInterval("/dc_motor/1")}
-                  onPressOut={this.stopFetchInterval}
-                  style={styles.arrow}
-                >
-                  <Text>button s</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  onPressIn={() => this.startFetchInterval("/dc_motor/3")}
-                  onPressOut={this.stopFetchInterval}
-                  style={styles.arrow}
-                >
-                  <Text>button d</Text>
-                </TouchableOpacity>
-              </View>
-
-            </View>
-
+                <Arrow 
+                  baseUrl={this.state.baseUrl}
+                />
 
           </View>
       )
@@ -187,20 +110,7 @@ const styles = StyleSheet.create({
     marginTop: getStatusBarHeight(),
   },
 
-  arrows: {
-    backgroundColor: 'pink',
-    height: 200,
-  },
 
-  arrowsRow: {
-    flexDirection: 'row',
-    flex:1
-  },
-
-
-  arrow: {
-    flex:1
-  },
 
   /*
   container: {
