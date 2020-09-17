@@ -9,32 +9,36 @@ export default class IsLogin extends React.Component {
         port: "8080",
     }
 
-    checkUrlValidation = (url) => {
+    checkUrlValidation = (url, host) => {
+      if (host.includes('.')) {
         var request = new XMLHttpRequest();
         request.onreadystatechange = (e) => {
           if (request.readyState !== 4) {
             return;
           }
-        
+
           if (request.status === 200) {
             alert('접속 성공');
             this.props.changeLoginStatusTrue();
           } else {
-            alert('호스트와 포트를 다시 한번 확인해주세요.');
+            alert('접속 실패.\n호스트, 포트, 서버를 다시 한번 확인해주세요.');
           }
         };
         request.open('GET', url);
         request.send();
+      } else {
+        alert('접속 실패.\n호스트, 포트, 서버를 다시 한번 확인해주세요.');
+      }
     }
 
     submitHostPort = () => {
         const url = `http://${this.state.host}:${this.state.port}/`;
-        this.checkUrlValidation(url);
+        this.checkUrlValidation(url, this.state.host);
     }
     
     render() {
         return (
-            <SafeAreaView style={styles.container}>
+          <SafeAreaView style={styles.container}>
             <TextInput 
               placeholder="HOST 입력" 
               keyboardType="numeric"

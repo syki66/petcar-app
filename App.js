@@ -10,7 +10,7 @@ import IsLogin from './IsLogin';
 
 const screenWidth = Dimensions.get('window').width;
 
-const input_url = "http://192.168.123.21:8080/dc_motor/0";
+const input_url = "http://192.168.123.21:8080/dc_motor/3";
 
 const option = {
   method: 'GET'
@@ -39,13 +39,13 @@ export default class App extends React.Component {
         console.warn('error');
       }
     };
-    request.open('GET', 'http://192.168.123.21:8080/dc_motor/1');
+    request.open('GET', 'http://192.168.123.21:8080/dc_motor/0');
     request.send();
   }
 
   startFetchInterval = () => {
     //console.log("start")
-    this.intervalID = setInterval(() => fetch(input_url, option), 50 );
+    this.intervalID = setInterval(() => this.fetchUrl()/*fetch(input_url, option)*/, 50 );
     this.setState({ DCMotor: true });
     
   }
@@ -63,7 +63,7 @@ export default class App extends React.Component {
 
   render(){
     return (
-      this.state.isLogin ? (
+      !this.state.isLogin ? (
         <IsLogin changeLoginStatusTrue = {this.changeLoginStatusTrue} />
       ) : (
           <View>
