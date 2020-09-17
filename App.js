@@ -24,6 +24,11 @@ export default class App extends React.Component {
   state = {
     isLogin: false,
     DCMotor: true,
+    message: "aaaaaaaaa"
+  }
+
+  callbackFunction = (childData) => {
+    this.setState({message: childData})
   }
 
   fetchUrl = () => {
@@ -39,7 +44,7 @@ export default class App extends React.Component {
         console.warn('error');
       }
     };
-    request.open('GET', 'http://192.168.123.21:8080/dc_motor/0');
+    request.open('GET', 'http://192.168.123.11:8080/dc_motor/0');
     request.send();
   }
 
@@ -64,7 +69,9 @@ export default class App extends React.Component {
   render(){
     return (
       !this.state.isLogin ? (
-        <IsLogin changeLoginStatusTrue = {this.changeLoginStatusTrue} />
+        <IsLogin changeLoginStatusTrue = {this.changeLoginStatusTrue} 
+        parentCallback = {this.callbackFunction}
+        />
       ) : (
           <View>
             <View style={styles.container}>
@@ -77,7 +84,7 @@ export default class App extends React.Component {
                       <meta name="viewport" content="width=device-width, user-scalable=no">
                     </head>
                     <body style="margin: 0px; background: #0e0e0e;">
-                      <img style="width: 100%" src="http://192.168.123.21:8080/video_feed">
+                      <img style="width: 100%" src="http://192.168.123.11:8080/video_feed">
                     </body>
                   </html>
                 `)
@@ -85,7 +92,7 @@ export default class App extends React.Component {
 
               />
             </View>
-
+                <Text>{this.state.message}</Text>
 
             <View style={styles.arrows}>
 

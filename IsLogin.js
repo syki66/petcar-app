@@ -9,6 +9,11 @@ export default class IsLogin extends React.Component {
         port: "8080",
     }
 
+    sendData = () => {
+      this.props.parentCallback("callback test");
+    }
+
+
     checkUrlValidation = (url, host) => {
       if (host.includes('.')) {
         var request = new XMLHttpRequest();
@@ -19,6 +24,7 @@ export default class IsLogin extends React.Component {
 
           if (request.status === 200) {
             alert('접속 성공');
+            this.sendData()
             this.props.changeLoginStatusTrue();
           } else {
             alert('접속 실패.\n호스트, 포트, 서버를 다시 한번 확인해주세요.');
