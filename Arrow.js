@@ -51,7 +51,7 @@ export default class Arrow extends React.Component {
           onPressOut={this.stopFetchInterval}
           style={styles.arrow}
         >
-          <Text>button q</Text>
+          <Text style={styles.text}>⟲</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -59,7 +59,7 @@ export default class Arrow extends React.Component {
           onPressOut={this.stopFetchInterval}
           style={styles.arrow}
         >
-          <Text>button w</Text>
+          <Text style={styles.text}>↑</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -67,7 +67,7 @@ export default class Arrow extends React.Component {
           onPressOut={this.stopFetchInterval}
           style={styles.arrow}
         >
-          <Text>button e</Text>
+          <Text style={styles.text}>⟳</Text>
         </TouchableOpacity>
       </View>
 
@@ -77,7 +77,7 @@ export default class Arrow extends React.Component {
           onPressOut={this.stopFetchInterval}
           style={styles.arrow}
         >
-          <Text>button a</Text>
+          <Text style={styles.text}>←</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -85,7 +85,7 @@ export default class Arrow extends React.Component {
           onPressOut={this.stopFetchInterval}
           style={styles.arrow}
         >
-          <Text>button s</Text>
+          <Text style={styles.text}>↓</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -93,7 +93,7 @@ export default class Arrow extends React.Component {
           onPressOut={this.stopFetchInterval}
           style={styles.arrow}
         >
-          <Text>button d</Text>
+          <Text style={styles.text}>→</Text>
         </TouchableOpacity>
       </View>
 
@@ -108,16 +108,24 @@ const styles = StyleSheet.create({
   arrows: {
     backgroundColor: 'pink',
     height: 200,
+    
   },
 
   arrowsRow: {
     flexDirection: 'row',
     flex: 1
+    
   },
 
 
   arrow: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'center',
   },
+
+  text: {
+    textAlign: 'center',
+    fontSize: 100
+  }
 
 });

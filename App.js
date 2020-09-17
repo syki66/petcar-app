@@ -3,22 +3,13 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Button, TouchableWithoutFeedback, TouchableOpacity, TextInput, SafeAreaView, Image, Dimensions } from 'react-native';
 import { WebView } from 'react-native-webview';
 
+//import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
-
 
 import IsLogin from './IsLogin';
 import Arrow from './Arrow';
+import Camera from './Camera';
 
-const screenWidth = Dimensions.get('window').width;
-
-
-
-// const input_url = "http://192.168.123.11:8080/dc_motor/3";
-
-
-// const option = {
-//   method: 'GET'
-// }
 
 
 // fetch 를 http get으로 바꿔야됨
@@ -54,25 +45,10 @@ export default class App extends React.Component {
           sendStateToParent={this.getChildState}
         />
       ) : (
-          <View>
-            <View style={styles.container}>
-              <WebView
-                scrollEnabled="false"
-                source={{
-                  html: (`
-                  <html>
-                    <head>
-                      <meta name="viewport" content="width=device-width, user-scalable=no">
-                    </head>
-                    <body style="margin: 0px; background: #0e0e0e;">
-                      <img style="width: 100%" src=${this.state.baseUrl}/video_feed>
-                    </body>
-                  </html>
-                `)
-                }}
-
-              />
-            </View>
+          <View style={styles.container}>
+                <Camera 
+                  baseUrl={this.state.baseUrl}
+                />
                 <Text>{this.state.baseUrl}</Text>
 
                 <Arrow 
@@ -105,24 +81,8 @@ const styles = StyleSheet.create({
 
 
   container: {
-    height: screenWidth * 0.75,
-    width: "100%",
     marginTop: getStatusBarHeight(),
-  },
+},
 
 
-
-  /*
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    backgroundColor: 'red',
-    width: '100%',
-    height: '50%'
-  }
-  */
 });
