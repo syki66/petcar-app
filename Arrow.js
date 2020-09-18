@@ -23,7 +23,7 @@ export default class Arrow extends React.Component {
   
   startFetchInterval = (url) => {
     //console.log("start")
-    this.intervalID = setInterval(() => this.fetchUrl(url), 50 );
+    this.intervalID = setInterval(() => this.fetchUrl(url), 100 );
     //this.setState({ DCMotor: true });
     
   }
@@ -47,7 +47,7 @@ export default class Arrow extends React.Component {
 
       <View style={styles.arrowsRow}>
         <TouchableOpacity
-          onPressIn={() => this.startFetchInterval(`${this.props.baseUrl}/dc_motor/4`)}
+          onPressIn={() => this.startFetchInterval(`${this.props.baseUrl}/dc_motor_interval/4`)}
           onPressOut={this.stopFetchInterval}
           style={styles.arrow}
         >
@@ -55,7 +55,7 @@ export default class Arrow extends React.Component {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPressIn={() => this.startFetchInterval(`${this.props.baseUrl}/dc_motor/0`)}
+          onPressIn={() => this.startFetchInterval(`${this.props.baseUrl}/dc_motor_interval/0`)}
           onPressOut={this.stopFetchInterval}
           style={styles.arrow}
         >
@@ -63,7 +63,7 @@ export default class Arrow extends React.Component {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPressIn={() => this.startFetchInterval(`${this.props.baseUrl}/dc_motor/5`)}
+          onPressIn={() => this.startFetchInterval(`${this.props.baseUrl}/dc_motor_interval/5`)}
           onPressOut={this.stopFetchInterval}
           style={styles.arrow}
         >
@@ -73,7 +73,7 @@ export default class Arrow extends React.Component {
 
       <View style={styles.arrowsRow}>
         <TouchableOpacity
-          onPressIn={() => this.startFetchInterval(`${this.props.baseUrl}/dc_motor/2`)}
+          onPressIn={() => this.startFetchInterval(`${this.props.baseUrl}/dc_motor_interval/2`)}
           onPressOut={this.stopFetchInterval}
           style={styles.arrow}
         >
@@ -81,7 +81,7 @@ export default class Arrow extends React.Component {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPressIn={() => this.startFetchInterval(`${this.props.baseUrl}/dc_motor/1`)}
+          onPressIn={() => this.startFetchInterval(`${this.props.baseUrl}/dc_motor_interval/1`)}
           onPressOut={this.stopFetchInterval}
           style={styles.arrow}
         >
@@ -89,7 +89,7 @@ export default class Arrow extends React.Component {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPressIn={() => this.startFetchInterval(`${this.props.baseUrl}/dc_motor/3`)}
+          onPressIn={() => this.startFetchInterval(`${this.props.baseUrl}/dc_motor_interval/3`)}
           onPressOut={this.stopFetchInterval}
           style={styles.arrow}
         >
