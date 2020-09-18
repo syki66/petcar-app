@@ -49,7 +49,6 @@ export default class App extends React.Component {
                 <Camera 
                   baseUrl={this.state.baseUrl}
                 />
-                <Text>{this.state.baseUrl}</Text>
 
                 <Arrow 
                   baseUrl={this.state.baseUrl}
