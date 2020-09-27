@@ -2,7 +2,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TouchableWithoutFeedback, TouchableOpacity, TextInput, SafeAreaView, Image, Dimensions } from 'react-native';
 
-export default class LED extends React.Component {
+export default class LEDSERVO extends React.Component {
 
     fetchUrl = (url) => {
         var request = new XMLHttpRequest();
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
 
     container: {
       flexDirection: 'row',
-      height: 60
+      height: 50
       
     },
     led: {
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     },
     text: {
       textAlign: 'center',
-      fontSize: 10,
+      fontSize: 20,
     },
 
     white:{

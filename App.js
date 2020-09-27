@@ -56,14 +56,15 @@ export default class App extends React.Component {
                   baseUrl={this.state.baseUrl}
                 />
                 
-                
-                {/* <LED
-                  baseUrl={this.state.baseUrl}
-                /> */}
+                <View >
+                  <LED
+                    baseUrl={this.state.baseUrl}
+                  />
 
-                <Servo
-                  baseUrl={this.state.baseUrl}
-                />
+                  <Servo
+                    baseUrl={this.state.baseUrl}
+                  />
+                </View>
 
           </View>
       )
