@@ -9,6 +9,7 @@ import { getStatusBarHeight } from 'react-native-status-bar-height';
 import IsLogin from './IsLogin';
 import Arrow from './Arrow';
 import Camera from './Camera';
+import LED from './LED';
 
 
 
@@ -53,6 +54,11 @@ export default class App extends React.Component {
                 <Arrow 
                   baseUrl={this.state.baseUrl}
                 />
+                
+                
+                <LED
+                  baseUrl={this.state.baseUrl}
+                />
 
           </View>
       )
@@ -81,7 +87,7 @@ const styles = StyleSheet.create({
 
   container: {
     marginTop: getStatusBarHeight(),
-},
+  },
 
 
 });

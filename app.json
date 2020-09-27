@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "picar-app",
-    "slug": "picar-app",
+    "slug": "picar-controller",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,7 +17,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.syki66.picar",
+      "buildNumber": "0.1.0"
+    },
+    "android": {
+      "package": "com.syki66.picar",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"

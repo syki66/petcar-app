@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Button, TouchableWithoutFeedback, TouchableOpac
 
 export default class IsLogin extends React.Component {
     state = {
-        host: "0.0.0.0",
+        host: "raspberrypi",
         port: "8080",
     }
 
