@@ -10,6 +10,7 @@ import IsLogin from './IsLogin';
 import Arrow from './Arrow';
 import Camera from './Camera';
 import LED from './LED';
+import Servo from './Servo';
 
 
 
@@ -56,7 +57,11 @@ export default class App extends React.Component {
                 />
                 
                 
-                <LED
+                {/* <LED
+                  baseUrl={this.state.baseUrl}
+                /> */}
+
+                <Servo
                   baseUrl={this.state.baseUrl}
                 />
 
