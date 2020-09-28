@@ -41,7 +41,7 @@ export default class App extends React.Component {
 
   render(){
     return (
-      !this.state.isLogin ? (
+      this.state.isLogin ? (
         <IsLogin
           changeLoginStatusTrue={this.changeLoginStatusTrue}
           sendStateToParent={this.getChildState}

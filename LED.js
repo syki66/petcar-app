@@ -88,7 +88,9 @@ const styles = StyleSheet.create({
     },
     led: {
       flex: 1,
-      justifyContent: 'center'
+      justifyContent: 'center',
+      margin: 3,
+      borderRadius: 10
       
     },
     text: {

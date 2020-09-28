@@ -45,7 +45,7 @@ export default class Arrow extends React.Component {
   render() {
     return (
       <View>
-        <ToggleSwitch
+        {/* <ToggleSwitch
           isOn={this.state.powerMode}
           onColor="green"
           offColor="gray"
@@ -53,7 +53,7 @@ export default class Arrow extends React.Component {
           labelStyle={{ color: "black", fontWeight: "800" }}
           size="large"
           onToggle={this.toggleState}
-        />
+        /> */}
 
 
         {this.state.powerMode ? (

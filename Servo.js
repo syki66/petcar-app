@@ -54,18 +54,22 @@ export default class Servo extends React.Component {
 const styles = StyleSheet.create({
 
     container: {
-        height: 100
+        height: 100,
+        margin:6,
+        
     },
     servo_on: {
         justifyContent: 'center',
         backgroundColor: '#8EFF69',
-        flex:1
+        flex:1,
+        borderRadius: 10
 
     },
     servo_off: {
         justifyContent: 'center',
         backgroundColor: '#626262',
-        flex: 1
+        flex: 1,
+        borderRadius: 10
     },
     text: {
         textAlign: 'center',
