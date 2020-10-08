@@ -48,6 +48,7 @@ export default class App extends React.Component {
         />
       ) : (
           <View style={styles.container}>
+                
                 <Camera 
                   baseUrl={this.state.baseUrl}
                 />
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
 
 
   container: {
-    marginTop: getStatusBarHeight(),
+    //marginTop: getStatusBarHeight(),
   },
 
 

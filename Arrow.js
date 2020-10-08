@@ -8,7 +8,7 @@ export default class Arrow extends React.Component {
 
 
   state = {
-    powerMode: false,
+    powerMode: true,
     //DCMotor: true,
     //baseUrl: ""
   }
