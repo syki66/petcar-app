@@ -1,6 +1,6 @@
 # petcar-app
 
-[petcar-sever](https://github.com/syki66/picar-server)와 통신하여 원격 제어하는 `React Native` 기반 `모바일 앱`
+[petcar-sever](https://github.com/syki66/petcar-server)와 통신하여 원격 제어하는 `React Native` 기반 `모바일 앱`
 
 |로그인|메인|
 |:---:|:---:|
