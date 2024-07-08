@@ -83,7 +83,7 @@ expo start --tunnel
 
 ## 시연 영상
 
-[![demo](./thumbnail.png)](https://syki66.github.io/petcar-server/)
+[![demo](./thumbnail.png)](https://syki66.github.io/petcar-client/)
 
 ## 참고 자료
 
