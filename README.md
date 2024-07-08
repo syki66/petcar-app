@@ -87,4 +87,4 @@ expo start --tunnel
 
 ## 참고 자료
 
-- https://blog.syki66.com/2020/09/13/picar
+- [원격 제어 가능한 라즈베리파이 자동차 제작하기](https://blog.syki66.com/2020/10/08/picar)
