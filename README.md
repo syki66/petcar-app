@@ -1,16 +1,46 @@
-# petcar-app
+# petcar-client
 
-[petcar-sever](https://github.com/syki66/petcar-server)와 통신하여 원격 제어하는 `React Native` 기반 `모바일 앱`
+[petcar-sever](https://github.com/syki66/petcar-server)와 통신하여 원격 제어하는 `Expo`, `React Native` 기반 `모바일 앱`
 
-|로그인|메인|
-|:---:|:---:|
-|![login](https://user-images.githubusercontent.com/59393359/149191949-7eedd31f-e74f-4e06-9ede-c8e003d42c1c.PNG)|![main](https://user-images.githubusercontent.com/59393359/149191717-e9cec08f-ce35-4764-a90b-41f844be991e.PNG)|
+|                                                   로그인 화면                                                   |                                                   메인 화면                                                    |
+| :-------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: |
+| ![login](https://user-images.githubusercontent.com/59393359/149191949-7eedd31f-e74f-4e06-9ede-c8e003d42c1c.PNG) | ![main](https://user-images.githubusercontent.com/59393359/149191717-e9cec08f-ce35-4764-a90b-41f844be991e.PNG) |
+
+## Feature
+
+- 카메라 화면 수신
+- LED 색상 제어
+- 서보모터 제어
+
+## Usage
+
+- 로그인창에서 HOST, PORT 입력 후 제출
+
+## Change Log
+
+- [CHANGELOG.MD](https://github.com/syki66/petcar-client/blob/master/CHANGELOG.md)
+
+## Run
+
+```bash
+npm install
+```
+
+```bash
+expo update
+```
+
+```bash
+expo start --tunnel
+```
+
+> Expo Go 업데이트
 
 ---
 
 ## 목적 및 필요성
 
-- 요즈음 반려동물을 키우는 사람이 1000만명을 넘어섬에 따라 많은 문제들이 야기되는데, 특히 1인 가구들의 입양도 굉장히 많이 늘어났음
+- 요즘 반려동물을 키우는 사람이 1000만명을 넘어섬에 따라 많은 문제들이 야기되는데, 특히 1인 가구들의 입양도 굉장히 많이 늘어났음
 - 보통 1인가구는 직장인들이 많기에 반려동물은 하루 중 대부분의 시간을 혼자 지내게 됨
 - 반려동물은 스트레스를 받아 이상행동을 하거나 다른 문제들이 발생할 수 있음
 - 반려동물과 주인이 멀리 떨어져 있는 상황에 문제가 발생했을 경우 주인이 알아차릴 수 있고, 통신을 이용해 직접 놀아주거나, 자동화를 통해서도 놀아줄 수 있도록 원격 장치를 만들게 됨
@@ -41,46 +71,20 @@
 
 ---
 
-## Feature
+## 회로도
 
-- 카메라 화면 수신
-- LED 색상 제어
-- 서보모터 제어
+![회로 구성](./circuit.png)
 
----
+## 결과물
 
-## Usage
+|             전면             |            측면             |
+| :--------------------------: | :-------------------------: |
+| ![전면](./petcar_front.jpeg) | ![측면](./petcar_side.jpeg) |
 
-- 로그인창에서 HOST, PORT 입력 후 제출
+## 시연 영상
 
----
+[![demo](./thumbnail.png)](https://syki66.github.io/petcar-server/)
 
-## Change Log
+## 참고 자료
 
-- [CHANGELOG.MD](https://github.com/syki66/picar-app/blob/master/CHANGELOG.md)
-
----
-
-## Run
-
-```
-npm install
-```
-
-```
-expo update
-```
-
-```
-expo start --tunnel
-```
-
-> Expo Go 업데이트
-
----
-
-## Build
-
-```
-
-```
+- https://blog.syki66.com/2020/09/13/picar
